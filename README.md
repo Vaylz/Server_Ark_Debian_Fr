@@ -71,7 +71,7 @@ quit
 ### 5. Créer le Script de Démarrage et d'Arrêt pour le Serveur
 Créez un script pour démarrer et arrêter le serveur. Créez un fichier nommé `startserver.sh` :
 ```bash
-nano /home/arkserver/startserver.sh
+nano /home/arkserver/server/ShooterGame/Binaries/Linux/startserver.sh
 ```
 Ajoutez le contenu suivant :
 ```bash
@@ -110,12 +110,12 @@ Cela permet de lancer le serveur avec la carte TheIsland
 
 Rendez le script exécutable :
 ```bash
-chmod +x /home/arkserver/start_server.sh
+chmod +x /home/arkserver/server/ShooterGame/Binaries/Linux/startserver.sh
 ```
 Créer un Script pour Arrêter le Serveur
 Créez un autre fichier nommé `stopserver.sh` :
 ```bash
-nano /home/arkserver/stop_server.sh
+nano /home/arkserver/stopserver.sh
 ```
 Ajoutez le contenu suivant :
 ```bash
@@ -144,8 +144,8 @@ Rendez ce script exécutable aussi
 ### 6. Démarrer et Arrêter le Serveur
 Pour démarrer le serveur, exécutez :
 ```bash
-/home/arkserver/server/ShotGame/Binaire/Linux/./startserver.sh
+/home/arkserver/server/ShooterGame/Binaries/Linux/./startserver.sh
 ```
 ```bash
-/home/arkserver/server/ShotGame/Binaire/Linux/./stopserver.sh
+/home/arkserver/server/ShooterGame/Binaries/Linux/./stopserver.sh
 ```
