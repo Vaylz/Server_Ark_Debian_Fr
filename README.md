@@ -30,8 +30,6 @@ session required pam_limits.so
 ```
 ### 2. Installer des Paquets Nécessaires
 Installez les paquets nécessaires pour faire fonctionner le serveur.
-
-Installez les paquets nécessaires pour faire fonctionner le serveur.
 ```bash
 #sudo add-apt-repository multiverse
 sudo apt install software-properties-common
