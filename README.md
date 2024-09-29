@@ -46,12 +46,12 @@ Téléchargez et installez SteamCMD.
 wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
 tar -xvzf steamcmd_linux.tar.gz
 ```
-# Créer un Utilisateur pour le Serveur
+Créer un Utilisateur pour le Serveur
 Il est recommandé de créer un utilisateur dédié pour le serveur ARK.
 ```bash
 sudo adduser arkserver
 ```
-# Créer un Dossier pour le Serveur
+Créer un Dossier pour le Serveur
 Créez un dossier pour le serveur ARK
 ```bash
 mkdir /home/arkserver/server
@@ -78,10 +78,9 @@ nano /home/arkserver/startserver.sh
 Ajoutez le contenu suivant :
 ```bash
 #!/bin/bash
-
 # Nom de la carte 
 MAP_NAME="TheIsland"
-# Nombre de slots disponibles
+Nombre de slots disponibles
 PLAYER_SLOTS=5
 
 # Vérification si le serveur est déjà en cours d'exécution
@@ -93,13 +92,13 @@ fi
 # Paramètres ulimit
 ulimit -n 100000
 
-# Démarrage du serveur ARK
+Démarrage du serveur ARK
 ./ShooterGameServer "$MAP_NAME?listen?MaxPlayers=$PLAYER_SLOTS" -server -log &
 
-# Récupérer le PID du serveur
+Récupérer le PID du serveur
 SERVER_PID=$!
 
-# Vérifier si le serveur a démarré avec succès
+Vérifier si le serveur a démarré avec succès
 sleep 5  # Attendre 5 secondes pour voir si le serveur démarre correctement
 
 if ps -p $SERVER_PID > /dev/null; then
@@ -115,7 +114,7 @@ Rendez le script exécutable :
 ```bash
 chmod +x /home/arkserver/start_server.sh
 ```
-#Créer un Script pour Arrêter le Serveur
+Créer un Script pour Arrêter le Serveur
 Créez un autre fichier nommé `stopserver.sh` :
 ```bash
 nano /home/arkserver/stop_server.sh
@@ -128,10 +127,10 @@ Ajoutez le contenu suivant :
 echo "Forçage de la sauvegarde du serveur..."
 rcon_command "SaveWorld"
 
-# Attendre quelques secondes pour s'assurer que la sauvegarde est terminée
+Attendre quelques secondes pour s'assurer que la sauvegarde est terminée
 sleep 10
 
-# Récupérer le PID du serveur
+Récupérer le PID du serveur
 PID=$(pgrep -f "ShooterGameServer")
 
 if [ -z "$PID" ]; then
