@@ -128,7 +128,7 @@ Ajoutez le code suivant dans `index.php` :
 </body>
 </html>
 ```
-ouvrire le port 80 avec ufw:
+ouvrire le port 80 avec ufw :
 ```bash
 sudo ufw allow 80/tcp
 ```
