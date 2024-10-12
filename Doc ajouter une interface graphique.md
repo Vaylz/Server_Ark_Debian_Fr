@@ -17,12 +17,12 @@ Créez un répertoire pour l'interface de contrôle :
 
 ```bash
 sudo mkdir /var/www/html/ark_server_control
-sudo nano /var/www/html/ark_server_control/index.php
+sudo nano /var/www/html/ark_server_control/index.html
 ```
 
 ## Étape 3 : Ajout du code HTML
 
-Ajoutez le code suivant dans `index.php` :
+Ajoutez le code suivant dans `index.html` :
 
 ```html
 <!DOCTYPE html>
