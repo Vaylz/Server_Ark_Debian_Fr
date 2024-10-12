@@ -150,7 +150,7 @@ echo "Content-type: text/html"
 echo ""
 
 # Chemin vers le dossier ARK
-ARK_DIR="/path/to/your/ark/directory"
+ARK_DIR="/home/arkserver/server/ShooterGame/Binaries/Linux"
 
 # Nom de la carte
 MAP_NAME="TheIsland"
