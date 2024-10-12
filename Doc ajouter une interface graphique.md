@@ -128,7 +128,10 @@ Ajoutez le code suivant dans `index.php` :
 </body>
 </html>
 ```
-
+ouvrire le port 80 avec ufw:
+```bash
+sudo ufw allow 80/tcp
+```
 ## Étape 4 : Création des scripts CGI
 
 Créez les scripts `start.sh` et `stop.sh` dans `/usr/lib/cgi-bin/` :
