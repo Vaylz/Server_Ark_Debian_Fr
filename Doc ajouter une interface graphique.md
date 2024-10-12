@@ -149,6 +149,9 @@ Ajoutez le code suivant dans `start.sh` :
 echo "Content-type: text/html"
 echo ""
 
+# Chemin vers le dossier ARK
+ARK_DIR="/path/to/your/ark/directory"
+
 # Nom de la carte
 MAP_NAME="TheIsland"
 # Nombre de slots disponibles
