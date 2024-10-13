@@ -266,5 +266,5 @@ sudo systemctl restart apache2
 Vous pouvez maintenant accéder à votre site via l'URL suivante :
 
 ```
-http://votre-serveur/ark_server_control/index.php
+http://votre-serveur/ark_server_control/index.html
 ```
