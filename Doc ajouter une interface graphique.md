@@ -143,8 +143,25 @@ fi
 # Paramètres ulimit
 #ulimit -n 100000
 
+# Se déplacer dans le répertoire contenant ShooterGameServer
+cd "$ARK_DIR" || {
+    echo "<html><body>"
+    echo "<h1>Erreur</h1>"
+    echo "<p>Impossible de trouver le répertoire ARK à $ARK_DIR.</p>"
+    echo "</body></html>"
+    exit 1
+}
+
+# Vérification de l'existence du fichier ShooterGameServer
+if [ ! -f "./ShooterGameServer" ]; then
+    echo "<html><body>"
+    echo "<h1>Erreur</h1>"
+    echo "<p>Le fichier 'ShooterGameServer' n'a pas été trouvé dans le répertoire $ARK_DIR.</p>"
+    echo "</body></html>"
+    exit 1
+fi
+
 # Démarrage du serveur ARK
-cd "ARK_DIR"
 ./ShooterGameServer "$MAP_NAME?listen?MaxPlayers=$PLAYER_SLOTS" -server -log &
 
 # Récupérer le PID du serveur
@@ -165,6 +182,8 @@ fi
 
 echo "</body></html>"
 exit 0
+
+
 ```
 
 
