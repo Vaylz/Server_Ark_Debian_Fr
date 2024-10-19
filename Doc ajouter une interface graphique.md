@@ -110,10 +110,10 @@ sudo ufw allow 80/tcp
 Créez les scripts `start.sh` et `stop.sh` dans `/usr/lib/cgi-bin/` :
 
 ```bash
-sudo nano /usr/lib/cgi-bin/start.sh
+sudo nano /usr/lib/cgi-bin/startserver.sh
 ```
 
-Ajoutez le code suivant dans `start.sh` :
+Ajoutez le code suivant dans `startserver.sh` :
 
 ```bash
 #!/bin/bash
@@ -165,10 +165,10 @@ echo "</body></html>"
 exit 0
 ```
 
-Puis, créez `stop.sh` :
+Puis, créez `stopserver.sh` :
 
 ```bash
-sudo nano /usr/lib/cgi-bin/stop.sh
+sudo nano /usr/lib/cgi-bin/stopserver.sh
 ```
 
 Ajoutez le code suivant dans `stop.sh` :
