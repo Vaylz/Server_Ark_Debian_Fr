@@ -30,7 +30,7 @@ Ajoutez le code suivant dans `index.html` :
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contrôle du Serveur ARK</title>
+    <title>Lancer le script Bash</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,13 +52,14 @@ Ajoutez le code suivant dans `index.html` :
             width: 100%;
         }
 
-        .button-container {
+        form {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px; /* Espacement entre les éléments du formulaire */
         }
 
-        .button {
+        button {
             background-color: #4CAF50;
             border: none;
             color: white;
@@ -67,19 +68,15 @@ Ajoutez le code suivant dans `index.html` :
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 0 10px;
             cursor: pointer;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s; /* Transition ajoutée */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre ajoutée */
         }
 
-        .button:hover {
+        button:hover {
             background-color: #45a049;
-        }
-
-        .button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
+            transform: translateY(-2px); /* Légère élévation lors du survol */
         }
 
         #message {
@@ -90,41 +87,17 @@ Ajoutez le code suivant dans `index.html` :
             width: 100%;
         }
     </style>
-    <script>
-        function startServer() {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', '/cgi-bin/start.sh', true);
-            xhr.onload = function() {
-                if (this.status === 200) {
-                    document.getElementById('message').innerHTML = this.responseText;
-                } else {
-                    document.getElementById('message').innerHTML = "Erreur lors du démarrage du serveur.";
-                }
-            };
-            xhr.send();
-        }
-
-        function stopServer() {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', '/cgi-bin/stop.sh', true);
-            xhr.onload = function() {
-                if (this.status === 200) {
-                    document.getElementById('message').innerHTML = this.responseText;
-                } else {
-                    document.getElementById('message').innerHTML = "Erreur lors de l'arrêt du serveur.";
-                }
-            };
-            xhr.send();
-        }
-    </script>
 </head>
 <body>
-    <h1>Contrôle du Serveur ARK</h1>
-    <div class="button-container">
-        <button class="button" onclick="startServer()">Démarrer le serveur</button>
-        <button class="button" onclick="stopServer()">Arrêter le serveur</button>
-    </div>
-    <div id="message"></div>
+    <h1>Exécuter un script Bash depuis une page Web</h1>
+    <form action="/cgi-bin/startserver.sh" method="GET">
+        <button type="submit">Lancer le script</button>
+    </form>
+    <br>
+    <form action="/cgi-bin/stopserver.sh" method="GET">
+        <button type="submit">Lancer le script1</button>
+    </form>
+
 </body>
 </html>
 ```
@@ -261,8 +234,28 @@ Puis redémarrez Apache :
 ```bash
 sudo systemctl restart apache2
 ```
+## Étape 6 : Creation d'un group ARKgroup
 
-## Étape 6 : Accédez à votre interface
+On va créer un groupe appelé `arkgroup`
+
+```bash
+sudo groupadd arkgroup
+```
+Ajouter les utilisateurs arkserver et www-data au groupe
+
+```bash
+sudo usermod -aG arkgroup arkserver
+sudo usermod -aG arkgroup www-data
+```
+Ensuite, il faut changer le groupe propriétaire du répertoire ARK pour qu'il soit sous la gestion de arkgroup. Cela va permettre à tous les utilisateurs dans ce groupe d'accéder au dossier.
+
+```bash
+sudo chown -R arkserver:arkgroup /home/arkserver/server
+sudo chmod -R 770 /home/arkserver/server
+```
+Attention de bien vérifier si le group arkgroup a les droits sur l'utilisateur arkserver
+
+## Étape 7 : Accédez à votre interface
 
 Vous pouvez maintenant accéder à votre site via l'URL suivante :
 
