@@ -14,7 +14,7 @@ Ce document décrit comment configurer votre serveur ARK pour qu'il lance toujou
 
 1. Ouvrez le fichier `GameUserSettings.ini` dans un éditeur de texte.
    ```bash
-   cd /home/arkserver/server/ShooterGame/Saved/Config/LinuxServer
+   sudo nano /home/arkserver/server/ShooterGame/Saved/Config/LinuxServer
    ```
 3. Recherchez la section qui définit la carte et les paramètres de sauvegarde. Par exemple :
    ```ini
