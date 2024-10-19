@@ -31,74 +31,50 @@ Ajoutez le code suivant dans `index.html` :
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lancer le script Bash</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
+    <title>Bienvenue sur notre serveur ARK</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Fonction pour envoyer une requête AJAX sans recharger la page
+        function executeServerAction(scriptPath) {
+            var xhr = new XMLHttpRequest(); // Créer l'objet XMLHttpRequest
 
-        h1 {
-            color: #4CAF50;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-        }
+            // Vérification de l'état de la requête
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Insérer la réponse dans la section messages
+                    document.getElementById("messageContent").innerHTML = xhr.responseText;
+                }
+            };
 
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px; /* Espacement entre les éléments du formulaire */
+            // Configurer et envoyer la requête GET vers le script CGI
+            xhr.open("GET", scriptPath, true);
+            xhr.send();
         }
-
-        button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s; /* Transition ajoutée */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre ajoutée */
-        }
-
-        button:hover {
-            background-color: #45a049;
-            transform: translateY(-2px); /* Légère élévation lors du survol */
-        }
-
-        #message {
-            margin-top: 20px;
-            font-size: 16px;
-            color: #555;
-            text-align: center;
-            width: 100%;
-        }
-    </style>
+    </script>
 </head>
 <body>
-    <h1>Exécuter un script Bash depuis une page Web</h1>
-    <form action="/cgi-bin/startserver.sh" method="GET">
-        <button type="submit">Lancer le script</button>
-    </form>
-    <br>
-    <form action="/cgi-bin/stopserver.sh" method="GET">
-        <button type="submit">Lancer le script1</button>
-    </form>
+    <header>
+        <h1>Serveur ARK: Survival Evolved</h1>
+    </header>
 
+    <main>
+        <section id="status">
+            <h2>État du serveur</h2>
+            <!-- Bouton pour démarrer le serveur -->
+            <button type="button" onclick="executeServerAction('/cgi-bin/startserver.sh')">Lancer le serveur</button>
+            <br><br>
+            <!-- Bouton pour arrêter le serveur -->
+            <button type="button" onclick="executeServerAction('/cgi-bin/stopserver.sh')">Arrêter le serveur</button>
+        </section>
+
+        <!-- Section pour afficher les messages du serveur -->
+        <section id="messages">
+            <h2>Messages du serveur</h2>
+            <div id="messageContent">
+                Aucune action pour le moment.
+            </div>
+        </section>
+    </main>
 </body>
 </html>
 ```
