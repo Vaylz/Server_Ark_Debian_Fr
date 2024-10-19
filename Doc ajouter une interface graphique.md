@@ -248,10 +248,11 @@ sudo nano /etc/apache2/sites-available/000-default.conf
 Ajoutez la configuration suivante :
 
 ```apache
-<Directory "/usr/lib/cgi-bin">
+<Directory "/var/www/cgi-bin">
     AllowOverride None
-    Options +ExecCGI
-    AddHandler cgi-script .sh
+    Options ExecCGI
+    Order allow,deny
+    Allow from all
 </Directory>
 ```
 
