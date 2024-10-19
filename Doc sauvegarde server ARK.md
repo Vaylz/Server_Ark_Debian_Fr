@@ -13,12 +13,15 @@ Ce document décrit comment configurer votre serveur ARK pour qu'il lance toujou
 ### Étape 1.2 : Modifier le fichier `GameUserSettings.ini`
 
 1. Ouvrez le fichier `GameUserSettings.ini` dans un éditeur de texte.
-2. Recherchez la section qui définit la carte et les paramètres de sauvegarde. Par exemple :
+   ```bash
+   cd /home/arkserver/server/ShooterGame/Saved/Config/LinuxServer
+   ```
+3. Recherchez la section qui définit la carte et les paramètres de sauvegarde. Par exemple :
    ```ini
    [ServerSettings]
    MapName=TheIsland
    ```
-3. Assurez-vous que le nom de la carte correspond à la sauvegarde. Par exemple, pour `TheIsland.ark`, cela devrait être `MapName=TheIsland`.
+4. Assurez-vous que le nom de la carte correspond à la sauvegarde. Par exemple, pour `TheIsland.ark`, cela devrait être `MapName=TheIsland`.
 
 ### Étape 1.3 : Modifier le fichier `Game.ini`
 
