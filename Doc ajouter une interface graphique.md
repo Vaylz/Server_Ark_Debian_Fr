@@ -193,7 +193,7 @@ Puis, créez `stopserver.sh` :
 sudo nano /usr/lib/cgi-bin/stopserver.sh
 ```
 
-Ajoutez le code suivant dans `stop.sh` :
+Ajoutez le code suivant dans `stopserver.sh` :
 
 ```bash
 #!/bin/bash
@@ -207,9 +207,15 @@ echo "<html><body>"
 echo "<h1>Contrôle du Serveur</h1>"
 echo "<p>Forçage de la sauvegarde du serveur...</p>"
 
-# Simule la commande RCON pour sauvegarder le monde
-# rcon_command "SaveWorld"
+# Fichier de sauvegarde (vous pouvez spécifier un chemin complet si nécessaire)
+backup_file="/path/to/your/directory/backup.log"
 
+# Simule la commande RCON pour sauvegarder le monde
+echo "Exécution de la commande de sauvegarde..."
+# Remplacez 'rcon_command' par votre commande RCON pour sauvegarder le monde
+rcon_command "SaveWorld" >> "$backup_file" 2>&1
+
+# Attendre que la sauvegarde soit terminée
 sleep 10
 
 # Récupérer le PID du serveur
@@ -224,6 +230,7 @@ fi
 
 echo "</body></html>"
 exit 0
+
 ```
 rendre les script  executible
 
