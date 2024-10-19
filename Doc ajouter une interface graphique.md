@@ -215,9 +215,13 @@ sudo a2enmod cgi
 Ouvrez le fichier de configuration d'Apache :
 
 ```bash
-sudo nano /etc/apache2/sites-available/000-default.conf
+cd /etc/apache2/sites-available/000-default.conf
 ```
+Faite une copie du fichier de 000-default.conf
 
+```bash
+sudo cp 000-default.conf ark.conf
+```
 Ajoutez la configuration suivante :
 
 ```apache
@@ -228,6 +232,7 @@ Ajoutez la configuration suivante :
     Allow from all
 </Directory>
 ```
+et modifier l'emplacement ou ce trouve votre fichier html
 
 Puis redémarrez Apache :
 
