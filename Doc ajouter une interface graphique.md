@@ -8,6 +8,7 @@ Mettez à jour votre liste de paquets et installez Apache :
 
 ```bash
 sudo apt update
+sudo apt upgrade
 sudo apt install apache2
 ```
 
@@ -107,7 +108,7 @@ sudo ufw allow 80/tcp
 ```
 ## Étape 4 : Création des scripts CGI
 
-Créez les scripts `start.sh` et `stop.sh` dans `/usr/lib/cgi-bin/` :
+Créez les scripts `startserver.sh` et `stopserver.sh` dans `/usr/lib/cgi-bin/` :
 
 ```bash
 sudo nano /usr/lib/cgi-bin/startserver.sh
@@ -164,6 +165,7 @@ fi
 echo "</body></html>"
 exit 0
 ```
+rendre le script startserver.sh executible
 
 Puis, créez `stopserver.sh` :
 
@@ -203,6 +205,7 @@ fi
 echo "</body></html>"
 exit 0
 ```
+rendre le script stopserver.sh executible
 
 ## Étape 5 : Configuration d'Apache pour les scripts CGI
 
@@ -222,7 +225,7 @@ Faite une copie du fichier de 000-default.conf
 ```bash
 sudo cp 000-default.conf ark.conf
 ```
-Ajoutez la configuration suivante :
+Ajoutez la configuration suivante dans le fichier ark.conf :
 
 ```apache
 <Directory "/var/www/cgi-bin">
@@ -255,8 +258,8 @@ sudo usermod -aG arkgroup www-data
 Ensuite, il faut changer le groupe propriétaire du répertoire ARK pour qu'il soit sous la gestion de arkgroup. Cela va permettre à tous les utilisateurs dans ce groupe d'accéder au dossier.
 
 ```bash
-sudo chown -R arkserver:arkgroup /home/arkserver/server
-sudo chmod -R 770 /home/arkserver/server
+sudo chown -R arkserver:arkgroup /home/arkserver
+sudo chmod -R 770 /home/arkserver
 ```
 Attention de bien vérifier si le group arkgroup a les droits sur l'utilisateur arkserver
 
