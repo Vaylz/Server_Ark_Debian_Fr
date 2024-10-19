@@ -165,7 +165,7 @@ fi
 echo "</body></html>"
 exit 0
 ```
-rendre le script startserver.sh executible
+
 
 Puis, créez `stopserver.sh` :
 
@@ -205,7 +205,11 @@ fi
 echo "</body></html>"
 exit 0
 ```
-rendre le script stopserver.sh executible
+rendre les script  executible
+
+```bash
+sudo chmod +x /usr/lib/cgi-bin/startserver.sh /usr/lib/cgi-bin/stopserver.sh
+```
 
 ## Étape 5 : Configuration d'Apache pour les scripts CGI
 
