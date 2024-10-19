@@ -141,9 +141,10 @@ if pgrep -f "ShooterGameServer" > /dev/null; then
 fi
 
 # Paramètres ulimit
-ulimit -n 100000
+#ulimit -n 100000
 
 # Démarrage du serveur ARK
+cd "ARK_DIR"
 ./ShooterGameServer "$MAP_NAME?listen?MaxPlayers=$PLAYER_SLOTS" -server -log &
 
 # Récupérer le PID du serveur
